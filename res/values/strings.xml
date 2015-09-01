@@ -1,0 +1,17 @@
+<resources>
+
+    <string name="app_name">劲松北社区</string>
+    
+    <string name="classify_zwxx">政务信息</string>
+    <string name="classify_tztg">通知通告</string>
+    <string name="classify_dcwj">调查问卷</string>
+    <string name="classify_sqgw">社区购物</string>
+    <string name="classify_zbsh">周边商户</string>
+    <string name="classify_jjyl">居家养老</string>
+    <string name="classify_yljk">医疗健康</string>
+    <string name="classify_bmxx">便民信息</string>
+    
+    <string name="get_bmxx_error">获取便民信息失败</string>
+    <string name="get_zwxx_error">获取政务信息失败</string>
+
+</resources>
