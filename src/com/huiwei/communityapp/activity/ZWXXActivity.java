@@ -59,6 +59,7 @@ public class ZWXXActivity extends Activity implements OnClickListener {
 				
 				Intent intent = new Intent();
 				intent.setClass(ZWXXActivity.this, WebActivity.class);
+				intent.putExtra("web_type", Constants.WEB_ZWXX);
 				intent.putExtra("id", info.id);
 				startActivity(intent);
 			}

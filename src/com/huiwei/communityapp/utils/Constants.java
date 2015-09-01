@@ -10,6 +10,10 @@ public class Constants {
 	public static final int LOAD_COMPLETE = 5;
 	public static final int FAIL = 6;
 	
+	public static final int WEB_ZWXX = 0;
+	public static final int WEB_SQGW = 1;
+	public static final int WEB_YLJK = 2;
+	
 	public static final int MENU_USER_CENTER = 0;
 	public static final int MENU_COMMUNITY_SHOPPING = 1;
 	public static final int MENU_AROUND_STORES = 2;

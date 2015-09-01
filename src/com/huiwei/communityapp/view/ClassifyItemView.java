@@ -10,7 +10,9 @@ import android.widget.TextView;
 
 import com.huiwei.communityapp.R;
 import com.huiwei.communityapp.activity.BMXXActivity;
+import com.huiwei.communityapp.activity.WebActivity;
 import com.huiwei.communityapp.activity.ZWXXActivity;
+import com.huiwei.communityapp.utils.Constants;
 
 public class ClassifyItemView extends RelativeLayout {
 	
@@ -67,6 +69,10 @@ public class ClassifyItemView extends RelativeLayout {
 						break;
 
 					case CLASSIFY_SQGW:
+						intent.setClass(context, WebActivity.class);
+						intent.putExtra("web_type", Constants.WEB_SQGW);
+						intent.putExtra("url", "http://www.jd.com");
+						context.startActivity(intent);
 						break;
 
 					case CLASSIFY_ZBSH:
@@ -76,6 +82,10 @@ public class ClassifyItemView extends RelativeLayout {
 						break;
 
 					case CLASSIFY_YLJK:
+						intent.setClass(context, WebActivity.class);
+						intent.putExtra("web_type", Constants.WEB_YLJK);
+						intent.putExtra("url", "http://www.j1.com");
+						context.startActivity(intent);
 						break;
 
 					case CLASSIFY_BMXX:
