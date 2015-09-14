@@ -13,6 +13,7 @@ public class Constants {
 	public static final int WEB_ZWXX = 0;
 	public static final int WEB_SQGW = 1;
 	public static final int WEB_YLJK = 2;
+	public static final int WEB_DCWJ = 3;
 	
 	public static final int MENU_USER_CENTER = 0;
 	public static final int MENU_COMMUNITY_SHOPPING = 1;

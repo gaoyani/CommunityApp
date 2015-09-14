@@ -4,17 +4,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewTreeObserver;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.ListView;
+import android.widget.Toast;
 
 import com.huiwei.communityapp.R;
 import com.huiwei.communityapp.adapter.NewsItemAdapter;
 import com.huiwei.communityapp.info.NewsInfo;
+import com.huiwei.communityapp.utils.Constants;
+import com.huiwei.communityapp.utils.Data;
 import com.huiwei.communityapp.view.ClassifyItemView;
 import com.huiwei.communityapp.view.ListViewForScrollView;
 import com.huiwei.communityapp.view.RecommendPictrueView;
@@ -26,6 +31,7 @@ public class MainActivity extends Activity {
 	private RecommendPictrueView recommendLeftView, recommendRightView1, recommendRightView2;
 	private LinearLayout layoutRecommend;
 	private boolean hasViewMeasured = false;
+	private long mExitTime;
 	
 	List<NewsInfo> newsList = new ArrayList<NewsInfo>();
 	
@@ -36,7 +42,6 @@ public class MainActivity extends Activity {
 		
 		hasViewMeasured = false;
 		listViewContent = (ListViewForScrollView)findViewById(R.id.lv_content);
-		listViewContent.setForScrollView(true);
 		recommendLeftView = (RecommendPictrueView)findViewById(R.id.view_recommend_left);
 		recommendRightView1 = (RecommendPictrueView)findViewById(R.id.view_recommend_right_1);
 		recommendRightView2 = (RecommendPictrueView)findViewById(R.id.view_recommend_right_2);
@@ -46,6 +51,21 @@ public class MainActivity extends Activity {
 		initButtons();
 		initRecommendView();
 		initListView();
+		
+		((Button)findViewById(R.id.btn_login)).setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent();
+				if (Data.memberInfo.isLogin) {
+					intent.setClass(MainActivity.this, UserCenterActivity.class);
+				} else {
+					intent.setClass(MainActivity.this, LoginActivity.class);
+//					intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+				}
+				startActivity(intent);
+			}
+		});
 	}
 	
 	private void initButtons() {
@@ -100,7 +120,6 @@ public class MainActivity extends Activity {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
-			
 			}
 		});
 	}
@@ -119,7 +138,21 @@ public class MainActivity extends Activity {
 	
 	@Override
 	public void onResume() {
-		
 		super.onResume();
+		
+		((Button)findViewById(R.id.btn_login)).setText(getResources().getString(
+				Data.memberInfo.isLogin ? R.string.user_center : R.string.login));
+	}
+	
+	@Override
+	public void onBackPressed() {
+		if (System.currentTimeMillis() - mExitTime > Constants.INTERVAL) {
+			Toast.makeText(this, getResources().getString(R.string.exit_app), 
+					Toast.LENGTH_SHORT).show();
+			mExitTime = System.currentTimeMillis();
+		} else {
+			finish();
+			System.exit(0);
+		}
 	}
 }

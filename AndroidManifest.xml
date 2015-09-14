@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.huiwei.communityapp"
-    android:versionCode="3"
-    android:versionName="1.0.3" >
+    android:versionCode="4"
+    android:versionName="1.0.5" >
 
     <uses-sdk
         android:minSdkVersion="10"
@@ -9,6 +9,9 @@
     
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.CALL_PHONE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <application
         android:allowBackup="true"
@@ -32,13 +35,94 @@
         
         <activity
             android:screenOrientation="portrait"
+            android:name="com.huiwei.communityapp.activity.DCWJActivity">
+        </activity>
+        
+        <activity
+            android:screenOrientation="portrait"
             android:name="com.huiwei.communityapp.activity.ZWXXActivity">
+        </activity>
+        
+        <activity
+            android:screenOrientation="portrait"
+            android:name="com.huiwei.communityapp.activity.TZTGListActivity">
+        </activity>
+        
+        <activity
+            android:screenOrientation="portrait"
+            android:name="com.huiwei.communityapp.activity.TZTGDetailActivity">
         </activity>
         
         <activity
             android:screenOrientation="portrait"
             android:name="com.huiwei.communityapp.activity.WebActivity">
         </activity>
+        
+        <activity
+            android:name="com.huiwei.communityapp.activity.ShoppingActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        
+        <activity
+            android:name="com.huiwei.communityapp.activity.UserCenterActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait">
+        </activity>
+        
+        <activity
+            android:name="com.huiwei.communityapp.activity.RegistActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        
+        <activity
+            android:name="com.huiwei.communityapp.activity.LoginActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        
+        <activity
+            android:name="com.huiwei.communityapp.activity.SubmitOrderActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        
+        <activity
+            android:name="com.huiwei.communityapp.activity.OrderManagerActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        
+        <activity
+            android:name="com.huiwei.communityapp.activity.OrderDetailActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        
+        
+      <!--  for payment  -->
+        <activity
+            android:name="com.pingplusplus.android.PaymentActivity"
+            android:launchMode="singleTop"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name="com.unionpay.uppay.PayActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:excludeFromRecents="true"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name="com.alipay.sdk.app.H5PayActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="behind" >
+        </activity>
+        <activity
+            android:name="com.alipay.sdk.auth.AuthActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="behind" >
+        </activity>
+
+        <activity-alias
+            android:name=".wxapi.WXPayEntryActivity"
+            android:exported="true"
+            android:targetActivity="com.pingplusplus.android.PaymentActivity" />
     </application>
 
 </manifest>

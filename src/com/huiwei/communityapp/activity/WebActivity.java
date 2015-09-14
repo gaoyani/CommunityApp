@@ -1,6 +1,7 @@
 package com.huiwei.communityapp.activity;
 
 import com.huiwei.communityapp.R;
+import com.huiwei.communityapp.task.DCWJDetailTask;
 import com.huiwei.communityapp.task.ZWXXDetailTask;
 import com.huiwei.communityapp.utils.Constants;
 import com.huiwei.communityapp.utils.UrlConstants;
@@ -42,7 +43,10 @@ public class WebActivity extends Activity {
 		
 		int webType = getIntent().getIntExtra("web_type", Constants.WEB_ZWXX);
 		if (webType == Constants.WEB_ZWXX) {
-			ZWXXDetailTask task = new ZWXXDetailTask(this, detailHandler, getIntent().getStringExtra("id"));
+			ZWXXDetailTask task = new ZWXXDetailTask(this, zwxxDetailHandler, getIntent().getStringExtra("id"));
+			task.execute();
+		} else if (webType == Constants.WEB_DCWJ) {
+			DCWJDetailTask task = new DCWJDetailTask(this, dcwjDetailHandler, getIntent().getStringExtra("id"));
 			task.execute();
 		} else {
 			RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(
@@ -53,11 +57,20 @@ public class WebActivity extends Activity {
 		}
 	}
 	
-	private Handler detailHandler = new Handler() {
+	private Handler zwxxDetailHandler = new Handler() {
 		public void dispatchMessage(android.os.Message msg) {
 			if (msg.what == Constants.SUCCESS) {
 				String html = (String)msg.obj;
 				webView.loadDataWithBaseURL(null, html, "text/html", "utf-8", null);
+			}
+		};
+	};
+	
+	private Handler dcwjDetailHandler = new Handler() {
+		public void dispatchMessage(android.os.Message msg) {
+			if (msg.what == Constants.SUCCESS) {
+				String url = (String)msg.obj;
+				webView.loadUrl(url);
 			}
 		};
 	};

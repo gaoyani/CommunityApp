@@ -7,12 +7,18 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.huiwei.communityapp.R;
 import com.huiwei.communityapp.activity.BMXXActivity;
+import com.huiwei.communityapp.activity.DCWJActivity;
+import com.huiwei.communityapp.activity.ShoppingActivity;
+import com.huiwei.communityapp.activity.TZTGListActivity;
 import com.huiwei.communityapp.activity.WebActivity;
 import com.huiwei.communityapp.activity.ZWXXActivity;
+import com.huiwei.communityapp.task.DCWJListTask;
 import com.huiwei.communityapp.utils.Constants;
+import com.huiwei.communityapp.utils.Data;
 
 public class ClassifyItemView extends RelativeLayout {
 	
@@ -63,15 +69,17 @@ public class ClassifyItemView extends RelativeLayout {
 						break;
 
 					case CLASSIFY_TZTG:
+						intent.setClass(context, TZTGListActivity.class);
+						context.startActivity(intent);
 						break;
 
 					case CLASSIFY_DCWJ:
+						intent.setClass(context, DCWJActivity.class);
+						context.startActivity(intent);
 						break;
 
 					case CLASSIFY_SQGW:
-						intent.setClass(context, WebActivity.class);
-						intent.putExtra("web_type", Constants.WEB_SQGW);
-						intent.putExtra("url", "http://www.jd.com");
+						intent.setClass(context, ShoppingActivity.class);
 						context.startActivity(intent);
 						break;
 
